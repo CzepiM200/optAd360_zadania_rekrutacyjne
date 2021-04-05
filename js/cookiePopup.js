@@ -13,41 +13,46 @@ const cookieWrapper = {
   }
 }
 
-const saveConsent = (status) => {
+const saveCookie = (status) => {
   // ID + t-true/f-false
   const dataToSave = data.map( v => `${v.id}${(v.consent && status) ? 't': 'f'}`).join(',');
-  const expireTime = new Date().getTime() + 10000;
-  // const expireTime = new Date().getTime() + 1000 * 3600 * 24;
+  const expireTime = new Date().getTime() + 1000 * 3600 * 24;
   cookieWrapper.setItem("vendors", dataToSave, new Date(expireTime).toUTCString())
+}
 
+const lockPage = () => {
+  document.querySelector("main").classList.toggle("blur");
+  document.querySelector(".header").classList.toggle("blur");
+  document.querySelector("body").classList.toggle("lock-scroll");
+}
+
+const unlockPage = () => {
   document.querySelector("main").classList.toggle("blur");
   document.querySelector(".header").classList.toggle("blur");
   document.querySelector("body").classList.toggle("lock-scroll");
   document.querySelector(".cookie-popup").style.display = "none";
 }
 
-const setBgBlurAndLockScroll = () => {
-  document.querySelector("main").classList.toggle("blur");
-  document.querySelector(".header").classList.toggle("blur");
-  document.querySelector("body").classList.toggle("lock-scroll");
+const saveConsent = (status) => {
+  saveCookie(status)
+  unlockPage()
 }
 
 const fetchData = async () => {
-  const vendorsData = await fetch('https://optad360.mgr.consensu.org/cmp/v2/vendor-list.json')
+  return await fetch('https://optad360.mgr.consensu.org/cmp/v2/vendor-list.json')
   .then(response => response.json())
   .then(data => data.vendors)
   .then(vendors => Object.values(vendors))
   .catch((error) => {
     console.error('Error:', error);
   });
-
-  return vendorsData;
 }
 
-const createItem = (name, url, id, data) => {
+const createListItem = (name, url, id, data) => {
   const item = document.createElement("div")
   item.classList.add("cookie-popup__item")
 
+  // Title and Policy
   const itemTitle = document.createElement("p")
   itemTitle.innerText = name;
   const itemUrl = document.createElement("a")
@@ -60,6 +65,7 @@ const createItem = (name, url, id, data) => {
   wrapper.appendChild(itemUrl)
   item.appendChild(wrapper)
 
+  // Toggle
   const toggle = document.createElement("label")
   toggle.classList.add("cookie-popup__toggle")
   const input = document.createElement("input")
@@ -78,27 +84,21 @@ const createItem = (name, url, id, data) => {
   return item; 
 }
 
-const setPopup = async () => {
-  const body = document.querySelector("body")
-  setBgBlurAndLockScroll()
-  
-  const popup = document.createElement("div")
-  popup.classList.add("cookie-popup")
-  body.appendChild(popup)
-  
-  const content = document.createElement("div")
-  content.classList.add("cookie-popup__container")
-  popup.appendChild(content)
-
+const createPopupTitle = content => {
   const title = document.createElement("h1")
   title.classList.add("cookie-popup__title")
   title.innerText = "GDPR consent"
   content.appendChild(title)
+}
 
+const createPopupList = content => {
   const list = document.createElement("div")
   list.classList.add("cookie-popup__list")
   content.appendChild(list)
+  return list
+}
 
+const createPopupConsent = content => {
   const consent = document.createElement("div")
   const accept = document.createElement("button")
   accept.classList.add("cookie-popup__btn")
@@ -118,11 +118,31 @@ const setPopup = async () => {
   consent.appendChild(accept)
   consent.appendChild(reject)
   content.appendChild(consent)
+}
 
+const createPopupBody = body => {
+  const popup = document.createElement("div")
+  popup.classList.add("cookie-popup")
+  body.appendChild(popup)
+  
+  const content = document.createElement("div")
+  content.classList.add("cookie-popup__container")
+  popup.appendChild(content)
 
-  data = await fetchData()
-  data = data.map( v => {return {id: v.id, name: v.name, policyUrl: v.policyUrl, consent: true}})
-  data.forEach((vendor, index) => list.appendChild(createItem(vendor.name, vendor.policyUrl, index, data)))
+  createPopupTitle(content)
+  const list = createPopupList(content)
+  createPopupConsent(content)
+
+  return list
+}
+
+const setPopup = async () => {
+  lockPage()
+  const body = document.querySelector("body")
+  const list = createPopupBody(body)
+
+  data = (await fetchData()).map( v => {return {id: v.id, name: v.name, policyUrl: v.policyUrl, consent: true}})
+  data.forEach((vendor, index) => list.appendChild(createListItem(vendor.name, vendor.policyUrl, index, data)))
 }
 
 window.addEventListener('DOMContentLoaded', () => {

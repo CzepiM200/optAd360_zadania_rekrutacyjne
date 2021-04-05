@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marcin Czepiela - optAd360</title>
   <script type="text/javascript">
-    function myFunction() {
-      document.getElementById("demo").innerHTML = "Paragraph changed.";
-    }
+    let data;const cookieWrapper={getItem:e=>{return document.cookie.split(";").map(e=>e.split("=")).reduce((e,[t,o])=>({...e,[t.trim()]:o}),{})[e]},setItem:(e,t,o)=>{document.cookie=`${e}=${t}; expires=${o}`}},saveCookie=e=>{const t=data.map(t=>`${t.id}${t.consent&&e?"t":"f"}`).join(","),o=(new Date).getTime()+864e5;cookieWrapper.setItem("vendors",t,new Date(o).toUTCString())},lockPage=()=>{document.querySelector("main").classList.toggle("blur"),document.querySelector(".header").classList.toggle("blur"),document.querySelector("body").classList.toggle("lock-scroll")},unlockPage=()=>{document.querySelector("main").classList.toggle("blur"),document.querySelector(".header").classList.toggle("blur"),document.querySelector("body").classList.toggle("lock-scroll"),document.querySelector(".cookie-popup").style.display="none"},saveConsent=e=>{saveCookie(e),document.querySelector("main").classList.toggle("blur"),document.querySelector(".header").classList.toggle("blur"),document.querySelector("body").classList.toggle("lock-scroll"),document.querySelector(".cookie-popup").style.display="none"},fetchData=async()=>await fetch("https://optad360.mgr.consensu.org/cmp/v2/vendor-list.json").then(e=>e.json()).then(e=>e.vendors).then(e=>Object.values(e)).catch(e=>{console.error("Error:",e)}),createListItem=(e,t,o,c)=>{const n=document.createElement("div");n.classList.add("cookie-popup__item");const s=document.createElement("p");s.innerText=e;const a=document.createElement("a");a.innerText="Policy",a.href=t,a.target="_blank";const d=document.createElement("div");d.classList.add("cookie-popup__wrapper"),d.appendChild(s),d.appendChild(a),n.appendChild(d);const l=document.createElement("label");l.classList.add("cookie-popup__toggle");const p=document.createElement("input");p.classList.add("cookie-popup__checkbox"),p.type="checkbox",p.checked=!0,p.addEventListener("change",e=>{c[o].consent=!!e.target.checked});const r=document.createElement("span");return r.classList.add("cookie-popup__slider"),l.appendChild(p),l.appendChild(r),n.appendChild(l),n},createPopupTitle=e=>{const t=document.createElement("h1");t.classList.add("cookie-popup__title"),t.innerText="GDPR consent",e.appendChild(t)},createPopupList=e=>{const t=document.createElement("div");return t.classList.add("cookie-popup__list"),e.appendChild(t),t},createPopupConsent=e=>{const t=document.createElement("div"),o=document.createElement("button");o.classList.add("cookie-popup__btn"),o.classList.add("cookie-popup__btn_accept"),o.innerText="Accept",o.addEventListener("click",()=>{saveConsent(!0)});const c=document.createElement("button");c.classList.add("cookie-popup__btn"),c.classList.add("cookie-popup__btn_reject"),c.innerText="Reject",c.addEventListener("click",()=>{saveConsent(!1)}),t.classList.add("cookie-popup__consent"),t.appendChild(o),t.appendChild(c),e.appendChild(t)},createPopupBody=e=>{const t=document.createElement("div");t.classList.add("cookie-popup"),e.appendChild(t);const o=document.createElement("div");o.classList.add("cookie-popup__container"),t.appendChild(o),createPopupTitle(o);const c=createPopupList(o);return createPopupConsent(o),c},setPopup=async()=>{document.querySelector("main").classList.toggle("blur"),document.querySelector(".header").classList.toggle("blur"),document.querySelector("body").classList.toggle("lock-scroll");const e=document.querySelector("body"),t=createPopupBody(e);(data=(await fetchData()).map(e=>({id:e.id,name:e.name,policyUrl:e.policyUrl,consent:!0}))).forEach((e,o)=>t.appendChild(createListItem(e.name,e.policyUrl,o,data)))};window.addEventListener("DOMContentLoaded",()=>{!cookieWrapper.getItem("vendors")&&setPopup()});
   </script>
-  <script type="text/javascript" src="./js/cookiePopup.js"></script>
+  <!-- <script type="text/javascript" src="./js/cookiePopup.js"></script> -->
   <style>
     .d-none {
       display: none;
@@ -139,7 +137,7 @@
     .cookie-popup__btn_reject {
       background-color: #ef476f;
     }
-    </style>
+  </style>
   <link rel="stylesheet" type="text/css" href="./css/styles.css" >
 </head>
 <body>
