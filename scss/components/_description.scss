@@ -1,0 +1,56 @@
+.description {
+  margin-top: 40%;
+  backdrop-filter: blur(5px);
+  @-moz-document url-prefix() {
+    background-color: #00000080;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 45%;
+    height: 100%;
+    margin-top: 0;
+    position: absolute;
+    right: 5%;
+  }
+  &__about {
+    padding: 2rem 1.5rem;
+    @media screen and (min-width: 1000px) {
+      height: 100%;
+      padding: 0 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 400;
+    @media screen and (min-width: 1000px) {
+      font-size: 4rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+  &__info {
+    font-weight: 300;
+    line-height: 1.6rem;
+    @media screen and (min-width: 1000px) {
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+    }
+  }
+  &__btn {
+    margin-top: 2rem;
+    padding: 0.5rem 2rem;
+    background-color: white;
+    border: none;
+    border-radius: 2rem;
+    color: black;
+    font-weight: 300;
+    @media screen and (min-width: 1000px) {
+      width: 16rem;
+      margin-top: 4rem;
+      padding: 0.8rem 2.3rem;
+      font-size: 1.8rem;
+    }
+  }
+}

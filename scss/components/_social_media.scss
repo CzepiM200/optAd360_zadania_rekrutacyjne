@@ -1,0 +1,34 @@
+.social_media {
+  position: absolute;
+  right: 2%;
+  bottom: 1%;
+  $medias: "facebook", "instagram", "twitter";
+  @each $media in $medias {
+    .icon-#{$media} {
+      background-image: url("../../img/svg/#{$media}.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    right: calc(5% + 1.5rem);
+    bottom: 3%;
+  }
+  div {
+    margin: 0 0.2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    @media screen and (min-width: 1000px) {
+      width: 4rem;
+      height: 4rem;
+    }
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__container {
+    display: flex;
+  }
+}

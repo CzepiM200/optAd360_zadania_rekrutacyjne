@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcin Czepiela - optAd360</title>
+  <script type="text/javascript">
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "Paragraph changed.";
+    }
+  </script>
+  <script type="text/javascript" src="./js/cookiePopup.js"></script>
+  <style>
+    .d-none {
+      display: none;
+    }
+    .lock-scroll {
+      overflow: hidden;
+    } 
+    .blur {
+      filter: blur(5px);
+      pointer-events: none;
+      user-select: none;
+    }
+    .cookie-popup {
+      position: absolute;
+      top: 0;
+      z-index: 3;
+      width: 100vw; 
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .cookie-popup__bg {
+      width: 100%;
+      height: 100%;
+    } 
+    .cookie-popup__container { 
+      width: 90%;
+      margin: 1rem 0;
+      padding: 0.7rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 1rem;
+      background-color: #fff;
+      user-select: none;
+    }
+    @media screen and (min-width: 1000px) {
+      .cookie-popup__container {
+        width: 40rem;
+      }
+    }
+    .cookie-popup__title {
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #000;
+    }
+    .cookie-popup__list {
+      overflow-y: scroll;
+    }
+    .cookie-popup__item { 
+      margin-bottom: 1rem;
+      padding: 0.4rem 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ced4da;
+      border-radius: 1rem;
+    }
+    .cookie-popup__item p {
+      color: black;
+      margin-bottom: 0.2rem;
+      padding-right: 0.3rem;
+    }
+    .cookie-popup__item a {
+      color: #1d3557;
+      text-decoration: none;
+    }
+    .cookie-popup__toggle {
+      min-width: 40px;
+      position: relative;
+      width: 40px;
+      height: 21px;
+    }
+    .cookie-popup__toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .cookie-popup__slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 20px;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    .cookie-popup__slider:before {
+      position: absolute;
+      content: "";
+      height: 15px;
+      width: 15px;
+      left: 3px;
+      bottom: 3px;
+      border-radius: 50%;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    .cookie-popup__checkbox:checked + .cookie-popup__slider {
+      background-color: #118ab2;
+    }
+    .cookie-popup__checkbox:checked + .cookie-popup__slider:before {
+      -webkit-transform: translateX(18px);
+      -ms-transform: translateX(18px);
+      transform: translateX(18px);
+    }
+    .cookie-popup__consent {
+      display: flex; 
+      justify-content: center;
+    }
+    .cookie-popup__btn {
+      margin: 1rem 0.5rem 0 0.5rem;
+      padding: 0.5rem 1.5rem;
+      font-size: 1.4rem;
+      border: none;
+      border-radius: 1rem;
+      cursor: pointer;
+    }
+    .cookie-popup__btn_accept {
+      background-color: #118ab2;
+    }
+    .cookie-popup__btn_reject {
+      background-color: #ef476f;
+    }
+    </style>
+  <link rel="stylesheet" type="text/css" href="./css/styles.css" >
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <div class="header__logo"> 
+        <p><span>Chicago</span></p>
+      </div>
+      <nav class="header__nav">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="description">
+      <article class="description__about"> 
+        <h1 class="description__title">Discoverers' estate</h1>
+        <p class="description__info">Each apartment has at least one balcony, loggia, terrace or garden. The offer is completed with parking spaces in the underground garage and storage rooms. </p>
+        <button class="description__btn">READ MORE</button>
+      </article>
+    </section>
+    
+    <section class="social_media">
+      <article class="social_media__container">
+        <div class="icon-instagram"></div>
+        <div class="icon-facebook "><a href="#" target="_blank"></a></div>
+        <div class="icon-twitter"><a href="https://www.instagram.com/marcinczepielawebdesign" target="_blank"></a></div>
+      </article>
+    </section>
+
+  </main> 
+  <section class="white-space"></section>
+</body>
+</html>

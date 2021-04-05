@@ -1,0 +1,37 @@
+@import "general/reset";
+@import "general/fonts";
+@import "components/header";
+@import "components/description";
+@import "components/social_media";
+
+* {
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  color: white;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("../img/bg-m.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media screen and (min-width: 1000px) {
+    background-image: url("../img/bg-d.jpg");
+  }
+}
+
+.white-space {
+  height: 200rem;
+  color: antiquewhite;
+}

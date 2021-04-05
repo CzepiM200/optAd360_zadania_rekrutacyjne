@@ -1,0 +1,36 @@
+{
+  "name": "optad360",
+  "version": "1.0.0",
+  "description": "recruitment task",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp sass"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react-app": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "sass": "^1.26.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CzepiM200/optAd360_zadania_rekrutacyjne.git"
+  },
+  "author": "marcin czepiela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CzepiM200/optAd360_zadania_rekrutacyjne/issues"
+  },
+  "homepage": "https://github.com/CzepiM200/optAd360_zadania_rekrutacyjne#readme"
+}

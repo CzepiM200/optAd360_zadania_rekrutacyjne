@@ -1,0 +1,50 @@
+.header {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100vw;
+  backdrop-filter: blur(5px);
+  @-moz-document url-prefix() {
+    background-color: #00000080;
+    @media screen and (min-width: 1000px) {
+      background-color: #00000000;
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    position: absolute;
+    top: 0;
+    left: auto;
+    width: auto;
+    backdrop-filter: none;
+  }
+  &__container {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    overflow: hidden;
+    @media screen and (min-width: 1000px) {
+      padding: 0;
+    }
+  }
+  &__logo {
+    span {
+      font-size: 2.5rem;
+      font-weight: 300;
+      @media screen and (min-width: 1000px) {
+        font-size: 3.5rem;
+      }
+    }
+    @media screen and (min-width: 1000px) {
+      padding: 1rem 2rem;
+    }
+  }
+  &__nav {
+    transform: translateX(100vw);
+    ul {
+      display: flex;
+      li {
+        font-weight: 300;
+      }
+    }
+  }
+}
