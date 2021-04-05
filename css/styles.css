@@ -267,17 +267,17 @@ table {
   bottom: 1%;
 }
 .social_media .icon-facebook {
-  background-image: url("../../img/svg/facebook.svg");
+  background-image: url("../img/svg/facebook.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 .social_media .icon-instagram {
-  background-image: url("../../img/svg/instagram.svg");
+  background-image: url("../img/svg/instagram.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 .social_media .icon-twitter {
-  background-image: url("../../img/svg/twitter.svg");
+  background-image: url("../img/svg/twitter.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
